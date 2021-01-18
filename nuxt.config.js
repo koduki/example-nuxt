@@ -42,8 +42,28 @@ export default {
     '@nuxtjs/axios',
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  // // Fireabase Auth module configuration: https://firebase.nuxtjs.org/service-options/auth/
+  // firebase: {
+  //   config: {
+  //     apiKey: '<apiKey>',
+  //     authDomain: '<authDomain>',
+  //     databaseURL: '<databaseURL>',
+  //     projectId: '<projectId>',
+  //     storageBucket: '<storageBucket>',
+  //     messagingSenderId: '<messagingSenderId>',
+  //     appId: '<appId>',
+  //     measurementId: '<measurementId>'
+  //   },
+  //   services: {
+  //     auth: {
+  //       // it is recommended to configure either a mutation or action but you can set both
+  //       initialize: {
+  //         onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
+  //         // onAuthStateChangedAction: 'onAuthStateChangedAction'
+  //       }
+  //     }
+  //   }
+  // }
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

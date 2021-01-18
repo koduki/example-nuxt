@@ -1,45 +1,38 @@
-type UserType = {
-    id?: string,
+import { mutationTree } from 'typed-vuex'
+
+export type RootState = ReturnType<typeof state>
+export type User = {
+    id: string,
     name: string,
-    email: string,
-    thumbnail: string,
+    token: string,
+    pic: string,
+    timestamp: number,
 }
 
 export const state = () => ({
-    id:{} as UserType,
+    id: "",
     name: "",
     token: "",
     pic: "",
     timestamp: 0,
 })
 
-import { GetterTree, ActionTree, MutationTree } from 'vuex'
-export type RootState = ReturnType<typeof state>
-
-export const mutations: MutationTree<RootState> = {
-    store: (state, user: any) => {
+export const mutations = mutationTree(state, {
+    store(state, user: User) {
         state.id = user.id;
-        state.token = user.token;
         state.name = user.name;
+        state.token = user.pic;
         state.pic = user.pic;
+        state.timestamp = user.timestamp;
+    },
+    drop(state) {
+        state.id = state.token = state.name = state.pic = "";
+    },
+    reflesh(state, token: string) {
+        state.token = token;
         state.timestamp = new Date().getTime();
     },
-}
-
-// export const mutations = {
-//     store(state, user) {
-
-//     },
-//     add(state, text) {
-//       state.list.push({
-//         text,
-//         done: false
-//       })
-//     },
-//     remove(state, { todo }) {
-//       state.list.splice(state.list.indexOf(todo), 1)
-//     },
-//     toggle(state, todo) {
-//       todo.done = !todo.done
-//     }
-//   }
+    initialiseStore() {
+        console.log('initialised user')
+    },
+})
