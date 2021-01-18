@@ -1,12 +1,12 @@
 import { mutationTree } from 'typed-vuex'
 
 export type RootState = ReturnType<typeof state>
-export type User = {
+export type UserState = {
     id: string,
     name: string,
     token: string,
     pic: string,
-    timestamp: number,
+    timestamp?: number,
 }
 
 export const state = () => ({
@@ -18,12 +18,12 @@ export const state = () => ({
 })
 
 export const mutations = mutationTree(state, {
-    store(state, user: User) {
+    store(state, user: UserState) {
         state.id = user.id;
         state.name = user.name;
-        state.token = user.pic;
+        state.token = user.token;
         state.pic = user.pic;
-        state.timestamp = user.timestamp;
+        state.timestamp = (user.timestamp) ? (user.timestamp) : 0;
     },
     drop(state) {
         state.id = state.token = state.name = state.pic = "";

@@ -1,9 +1,11 @@
 import { Context } from '@nuxt/types'
 
 export default ({ redirect, app: { $accessor } }: Context) => {
-    console.log("pass: midlware1");
-    console.log($accessor.auth.authenticated);
-    if (!$accessor.auth.authenticated) {
+    console.log("check:"+$accessor.user.token);
+    if ($accessor.user.token) {
+        console.log("pass: midlware3");
+    } else {
+        console.log("redirect: login");
         return redirect('/login');
     }
 }

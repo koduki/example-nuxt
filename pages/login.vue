@@ -12,6 +12,7 @@
 import Vue from "vue";
 import firebase from "firebase";
 
+import {Auth, Provider} from "@/services/auth";
 export default Vue.extend({
   data() {
     return {
@@ -25,25 +26,9 @@ export default Vue.extend({
     return { message: data.message };
   },
   methods: {
-    auth() {
-      const config = {
-        apiKey: process.env.NUXT_ENV_AUTH_API_KEY,
-        authDomain: process.env.NUXT_ENV_AUTH_API_DOMAIN,
-      };
-      firebase.initializeApp(config);
-      const self = this;
-      firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
-        .then((res:any) => {
-          res.user.getIdToken()
-            .then((token: string) => {
-              self.token = token
-              console.log(token);
-              })
-            .catch((error:any) => {
-              console.log(error);
-            });
-        });
-
+    async auth() {
+      const auth = new Auth(this.$accessor);
+      await auth.login(Provider.Twitter);
       this.$router.push("/secret");
     },
   },
