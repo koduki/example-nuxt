@@ -1,20 +1,9 @@
+import { Context } from '@nuxt/types'
 
-// export default function ({ store, redirect }) {
-//     // If the user is not authenticated
-//     console.log("pass: midlware");
-//     if (!store.state.auth.authenticated) {
-//         return redirect('/login')
-//     }
-// }
-
-import { Middleware } from '@nuxt/types'
-// export const state = () => ({
-
-const myMiddleware: Middleware = (context) => {
+export default ({ redirect, app: { $accessor }}: Context) => {
     console.log("pass: midlware1");
-    if (!context.store.state.auth.authenticated) {
-        return context.redirect('/login');
+    console.log( $accessor.auth.authenticated );
+    if (!$accessor.auth.authenticated) {
+        return redirect('/login');
     }
 }
-export default myMiddleware
-
