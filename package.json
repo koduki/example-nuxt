@@ -11,14 +11,13 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.1",
     "@nuxtjs/axios": "^5.12.5",
-    "@nuxtjs/firebase": "^7.3.2",
+    "bootstrap": "^4.5.3",
+    "bootstrap-vue": "^2.21.2",
     "core-js": "^3.8.2",
-    "firebase": "^8.2.3",
-    "nuxt": "^2.14.12",
-    "nuxt-typed-vuex": "^0.1.22"
+    "nuxt": "^2.14.12"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
-    "@nuxt/typescript-build": "^2.0.2"
+    "@nuxt/typescript-build": "^2.0.4"
   }
 }

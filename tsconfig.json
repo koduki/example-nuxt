@@ -25,7 +25,6 @@
     },
     "types": [
       "@nuxt/types",
-      "@nuxtjs/firebase",
       "@types/node"
     ]
   },
