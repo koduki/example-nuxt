@@ -12,12 +12,12 @@
 import Vue from "vue";
 import firebase from "firebase";
 
-import {Auth, Provider} from "@/services/auth";
+import { Auth, Provider } from "@/services/auth";
 export default Vue.extend({
   data() {
     return {
       message: "Hello, Client",
-      token:""
+      token: "",
     };
   },
   async asyncData() {
@@ -27,7 +27,8 @@ export default Vue.extend({
   },
   methods: {
     async auth() {
-      const auth = new Auth(this.$accessor);
+      console.log(this.$config.firebase.apiKey);
+      const auth = new Auth(this.$accessor, this.$config.firebase);
       await auth.login(Provider.Twitter);
       this.$router.push("/secret");
     },

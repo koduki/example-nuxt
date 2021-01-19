@@ -23,10 +23,11 @@ export default {
       ],
     };
   },
-  async asyncData({ params, $axios}) {
+  async asyncData({ params, $config, $axios }) {
+      console.log(`${$config.baseURLAPI1}/${params.user}/${params.id}`)
     let data = await $axios.$get(
-      `http://localhost:5000/${params.user}/${params.id}`
-    )
+      `${$config.baseURLAPI1}/${params.user}/${params.id}`
+    );
     return { message: data.message, title: data.title };
   },
 };

@@ -7,15 +7,22 @@ export const Provider = {
 } as const;
 type Provider = typeof Provider[keyof typeof Provider];
 
+type Config = {
+    apiKey: string;
+    authDomain: string;
+}
+
 export class Auth {
     private $accessor: typeof accessorType;
-    constructor($accessor: typeof accessorType) {
+
+    constructor($accessor: typeof accessorType, $config: Config) {
         this.$accessor = $accessor;
         if (firebase.apps.length == 0) {
             const config = {
-                apiKey: process.env.NUXT_ENV_AUTH_API_KEY,
-                authDomain: process.env.NUXT_ENV_AUTH_API_DOMAIN,
-            };
+                apiKey: $config.apiKey,
+                authDomain: $config.authDomain,
+            }
+
             firebase.initializeApp(config);
         }
         console.log(firebase.apps);

@@ -30,6 +30,14 @@ export default {
     fallback: true,
     routes: ['/items/koduki/1', '/items/misuzu/2']
   },
+  // Set Runtime Configuration: https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-runtime-config
+  publicRuntimeConfig: {
+    baseURLAPI1: process.env.BASE_URL_API1,
+    firebase: {
+      apiKey: process.env.FIREBAE_AUTH_API_KEY,
+      authDomain: process.env.FIREBAE_AUTH_DOMAIN
+    }
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
