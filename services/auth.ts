@@ -1,6 +1,7 @@
 import firebase from "firebase";
 import { accessorType } from '@/store'
 
+// enum altanative
 export const Provider = {
     Google: 'GOOGLE',
     Twitter: 'TWITTER'
@@ -25,7 +26,6 @@ export class Auth {
 
             firebase.initializeApp(config);
         }
-        console.log(firebase.apps);
     }
 
     async login(provider: Provider) {

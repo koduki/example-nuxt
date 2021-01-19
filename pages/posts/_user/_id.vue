@@ -1,14 +1,17 @@
 <template>
   <section>
+    <h1>{{ message }}</h1>
     <p>{{ $route.params.user + ":" + $route.params.id }}</p>
   </section>
 </template>
+
 <script>
-export default {
+import Vue from "vue";
+export default Vue.extend({
   data() {
     return {
       message: "",
-      token: "",
+      title: "",
     };
   },
   head() {
@@ -24,11 +27,10 @@ export default {
     };
   },
   async asyncData({ params, $config, $axios }) {
-      console.log(`${$config.baseURLAPI1}/${params.user}/${params.id}`)
     let data = await $axios.$get(
       `${$config.baseURLAPI1}/${params.user}/${params.id}`
     );
     return { message: data.message, title: data.title };
   },
-};
+});
 </script>

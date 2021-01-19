@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'example-nuxt',
+    title: 'Nuxt Baseline',
     htmlAttrs: {
       lang: 'en'
     },
@@ -27,9 +27,9 @@ export default {
 
   // Generate Dynamic Routing
   generate: {
-    fallback: true,
-    routes: ['/items/koduki/1', '/items/misuzu/2']
+    routes: ['/posts/koduki/1', '/posts/koduki/2', '/posts/misuzu/1']
   },
+
   // Set Runtime Configuration: https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-runtime-config
   publicRuntimeConfig: {
     baseURLAPI1: process.env.BASE_URL_API1,
@@ -50,37 +50,20 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    // https://typed-vuex.roe.dev
     'nuxt-typed-vuex',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    // https://go.nuxtjs.dev/bootstrap
+    'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
 
-  // // Fireabase Auth module configuration: https://firebase.nuxtjs.org/service-options/auth/
-  // firebase: {
-  //   config: {
-  //     apiKey: '<apiKey>',
-  //     authDomain: '<authDomain>',
-  //     databaseURL: '<databaseURL>',
-  //     projectId: '<projectId>',
-  //     storageBucket: '<storageBucket>',
-  //     messagingSenderId: '<messagingSenderId>',
-  //     appId: '<appId>',
-  //     measurementId: '<measurementId>'
-  //   },
-  //   services: {
-  //     auth: {
-  //       // it is recommended to configure either a mutation or action but you can set both
-  //       initialize: {
-  //         onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
-  //         // onAuthStateChangedAction: 'onAuthStateChangedAction'
-  //       }
-  //     }
-  //   }
-  // }
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

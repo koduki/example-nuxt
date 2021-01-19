@@ -6,7 +6,6 @@ export type UserState = {
     name: string,
     token: string,
     pic: string,
-    timestamp?: number,
 }
 
 export const state = () => ({
@@ -23,7 +22,6 @@ export const mutations = mutationTree(state, {
         state.name = user.name;
         state.token = user.token;
         state.pic = user.pic;
-        state.timestamp = (user.timestamp) ? (user.timestamp) : 0;
     },
     drop(state) {
         state.id = state.token = state.name = state.pic = "";

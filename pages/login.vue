@@ -1,36 +1,38 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">Login</h1>
-      <p id="my-message">{{ message }}</p>
-      <button @click="auth">Login</button>
+      <h1 class="title">Login Page</h1>
+      <div>
+        <button class="button--grey" @click="authTwitter">
+          Twitterでログイン
+        </button>
+        <button class="button--grey" @click="authGoogle">
+          Googleでログイン
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import firebase from "firebase";
 
 import { Auth, Provider } from "@/services/auth";
 export default Vue.extend({
   data() {
-    return {
-      message: "Hello, Client",
-      token: "",
-    };
+    return {};
   },
-  async asyncData() {
-    let data = await fetch("http://localhost:5000/").then((res) => res.json());
-    console.log(data);
-    return { message: data.message };
-  },
+  async asyncData() {},
   methods: {
-    async auth() {
-      console.log(this.$config.firebase.apiKey);
+    async authGoogle() {
+      const auth = new Auth(this.$accessor, this.$config.firebase);
+      await auth.login(Provider.Google);
+      this.$router.push("/");
+    },
+    async authTwitter() {
       const auth = new Auth(this.$accessor, this.$config.firebase);
       await auth.login(Provider.Twitter);
-      this.$router.push("/secret");
+      this.$router.push("/");
     },
   },
 });
