@@ -14,7 +14,9 @@
     "bootstrap": "^4.5.3",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.8.2",
-    "nuxt": "^2.14.12"
+    "firebase": "^8.2.3",
+    "nuxt": "^2.14.12",
+    "nuxt-typed-vuex": "^0.1.22"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.12",
